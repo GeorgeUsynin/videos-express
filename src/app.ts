@@ -3,6 +3,7 @@ import express, { type Request, type Response } from 'express';
 import { VideosRouter, TestRouter } from './routers';
 import { HTTP_STATUS_CODES } from './constants';
 import { SETTINGS } from './settings';
+import { setupSwagger } from './swagger/swagger-setup';
 
 export const app = express();
 
@@ -20,5 +21,7 @@ app.use(SETTINGS.PATH.TESTING, TestRouter);
 app.get('/', (req: Request, res: Response) => {
     res.status(HTTP_STATUS_CODES.OK_200).json({ version: '1.0' });
 });
+
+setupSwagger(app);
 
 export default app;
