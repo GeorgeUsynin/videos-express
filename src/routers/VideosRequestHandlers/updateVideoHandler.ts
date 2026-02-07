@@ -68,7 +68,8 @@ const validate = (video: UpdateVideoInputModel & { createdAt: string }): CreateU
 
     if (!isValidPublicationDate) {
         errorsMessages.push({
-            message: 'PublicationDate is required and should be one day longer than the creation date.',
+            message:
+                'PublicationDate is required and should a string. Also should be one day longer than the creation date.',
             field: 'publicationDate',
         });
     }
@@ -96,7 +97,11 @@ export const updateVideoHandler = (
         return;
     }
 
-    db.videos.push({ ...foundVideo, ...payload });
+    for (let i = 0; i < db.videos.length; i++) {
+        if (db.videos[i].id === id) {
+            db.videos.splice(i, 1, { ...db.videos[i], ...payload });
+        }
+    }
 
     res.sendStatus(HTTP_STATUS_CODES.NO_CONTENT_204);
 };

@@ -19,7 +19,7 @@ export const db: DBType = {
     videos: [],
 };
 
-export const setDB = (dataset: DBType) => {
+export const setDB = (dataset?: DBType) => {
     if (!dataset) {
         db.videos = [];
         return;

@@ -7,4 +7,4 @@ const TestController = {
     deleteAllData: RequestHandlers.deleteAllData,
 };
 
-TestRouter.delete('/all-data', TestController.deleteAllData);
+TestRouter.delete('/', TestController.deleteAllData);
