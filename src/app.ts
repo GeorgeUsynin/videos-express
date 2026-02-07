@@ -1,5 +1,8 @@
 import cors from 'cors';
-import express from 'express';
+import express, { type Request, type Response } from 'express';
+import { VideosRouter, TestRouter } from './routers';
+import { HTTP_STATUS_CODES } from './constants';
+import { SETTINGS } from './settings';
 
 export const app = express();
 
@@ -11,8 +14,11 @@ app.use(express.json());
 // allowing requests from different origins (domains)
 app.use(cors());
 
-app.get('/', (req, res) => {
-    res.status(200).send('Hello world!');
+app.use(SETTINGS.PATH.VIDEOS, VideosRouter);
+app.use(SETTINGS.PATH.TESTING, TestRouter);
+
+app.get('/', (req: Request, res: Response) => {
+    res.status(HTTP_STATUS_CODES.OK_200).json({ version: '1.0' });
 });
 
 export default app;

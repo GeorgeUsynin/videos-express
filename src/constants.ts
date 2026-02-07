@@ -9,6 +9,16 @@ export enum Resolutions {
     P2160 = 'P2160',
 }
 
+export const MAX_LENGTH_CONSTRAINTS = {
+    title: 40,
+    author: 20,
+};
+
+export const AGE_CONSTRAINTS = {
+    min: 1,
+    max: 18,
+};
+
 export enum HTTP_STATUS_CODES {
     OK_200 = 200,
     CREATED_201 = 201,
