@@ -16,6 +16,7 @@ export const deleteVideoByIdHandler = (req: Request<URIParamsVideoModel>, res: R
     for (let i = 0; i < db.videos.length; i++) {
         if (db.videos[i].id === id) {
             db.videos.splice(i, 1);
+            break;
         }
     }
 

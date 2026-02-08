@@ -100,6 +100,7 @@ export const updateVideoHandler = (
     for (let i = 0; i < db.videos.length; i++) {
         if (db.videos[i].id === id) {
             db.videos.splice(i, 1, { ...db.videos[i], ...payload });
+            break;
         }
     }
 
